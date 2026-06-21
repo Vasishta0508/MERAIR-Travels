@@ -1,2 +1,2 @@
-/mnt/user-data/outputs/merair-interactive/index.html
+/mnt/user-data/outputs/merair-interactive/
 
