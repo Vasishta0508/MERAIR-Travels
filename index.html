@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MERAIR Travels - Premium travel packages, exotic destinations, and personalized travel experiences">
+  <title>MERAIR Travels - Premium Travel Experiences & Holiday Packages</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-weight='bold' fill='%230F1B3C'>✈</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0F1B3C;
+      --accent: #E63946;
+      --gold: #D4A574;
+      --light: #F8F7F4;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      transition: var(--transition);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+    }
+
+    nav a {
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .cta {
+      padding: 12px 32px;
+      background: linear-gradient(135deg, var(--accent) 0%, #ff6b7a 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 8px 24px rgba(230, 57, 70, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(230, 57, 70, 0.4);
+    }
+
+    /* HERO */
+    .hero {
+      margin-top: 80px;
+      height: 100vh;
+      background: linear-gradient(135deg, var(--primary) 0%, #1a2d5a 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(230, 57, 70, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      top: 10%;
+      right: -100px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      bottom: 10%;
+      left: -80px;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(30px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+      animation: slideInDown 0.8s ease;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 40px;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      animation: fadeInUp 0.8s ease 0.4s both;
+      flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+      padding: 12px 32px;
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 120px 60px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 16px;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      animation: fadeInUp 0.6s ease 0.1s both;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
+
+    /* DESTINATIONS */
+    .destinations {
+      background: var(--light);
+    }
+
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .destination-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      position: relative;
+      animation: cardSlideIn 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes cardSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .destination-card:nth-child(1) { animation-delay: 0s; }
+    .destination-card:nth-child(2) { animation-delay: 0.1s; }
+    .destination-card:nth-child(3) { animation-delay: 0.2s; }
+    .destination-card:nth-child(4) { animation-delay: 0.3s; }
+    .destination-card:nth-child(5) { animation-delay: 0.4s; }
+    .destination-card:nth-child(6) { animation-delay: 0.5s; }
+
+    .destination-card:hover {
+      transform: translateY(-16px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%);
+    }
+
+    .destination-card:hover .card-image {
+      transform: scale(1.08);
+    }
+
+    .card-content {
+      padding: 32px;
+    }
+
+    .card-content h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .card-content p {
+      color: #999;
+      font-size: 14px;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* FEATURES */
+    .features {
+      background: white;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 40px 32px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(230, 57, 70, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
+      transition: var(--transition);
+      animation: cardSlideIn 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    .feature-card:nth-child(1) { animation-delay: 0s; }
+    .feature-card:nth-child(2) { animation-delay: 0.1s; }
+    .feature-card:nth-child(3) { animation-delay: 0.2s; }
+    .feature-card:nth-child(4) { animation-delay: 0.3s; }
+
+    .feature-card:hover {
+      background: linear-gradient(135deg, rgba(230, 57, 70, 0.1) 0%, rgba(212, 165, 116, 0.1) 100%);
+      transform: translateY(-8px);
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* PACKAGES */
+    .packages {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a2d5a 100%);
+      color: white;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .package-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      animation: cardSlideIn 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    .package-card:nth-child(1) { animation-delay: 0s; }
+    .package-card:nth-child(2) { animation-delay: 0.15s; }
+    .package-card:nth-child(3) { animation-delay: 0.3s; }
+    .package-card:nth-child(4) { animation-delay: 0.45s; }
+
+    .package-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--gold);
+      transform: translateY(-12px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .package-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      margin-bottom: 12px;
+      color: var(--gold);
+    }
+
+    .package-card p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .package-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .package-btn {
+      padding: 12px 32px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .package-btn:hover {
+      background: var(--gold);
+      transform: scale(1.02);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      text-align: center;
+      padding: 100px 60px;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 60px;
+      text-align: center;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      header { padding: 16px 30px; }
+      nav { gap: 20px; }
+      section { padding: 80px 30px; }
+      .hero-content h1 { font-size: 48px; }
+      .section-title { font-size: 36px; }
+      .destinations-grid, .packages-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 14px 20px; }
+      nav { display: none; }
+      section { padding: 60px 20px; }
+      .hero { margin-top: 60px; }
+      .hero-content h1 { font-size: 32px; }
+      .hero-content p { font-size: 14px; }
+      .hero-buttons { flex-direction: column; gap: 12px; }
+      .section-title { font-size: 28px; }
+      .destinations-grid, .packages-grid, .features-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 60px 20px; }
+      .cta-section h2 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">✈ MERAIR</div>
+    <nav>
+      <a href="#destinations">Destinations</a>
+      <a href="#features">Why Us</a>
+      <a href="#packages">Packages</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cta">Book Now</button>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Discover Extraordinary Journeys</h1>
+      <p>Experience the world's most captivating destinations with personalized travel consultancy and exclusive deals</p>
+      <div class="hero-buttons">
+        <button class="cta">Start Your Adventure</button>
+        <button class="btn-secondary">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTINATIONS SECTION -->
+  <section class="destinations" id="destinations">
+    <div class="section-header">
+      <div class="section-label">Explore Destinations</div>
+      <h2 class="section-title">Premium Destinations</h2>
+      <p class="section-subtitle">Handpicked locations that promise unforgettable memories and authentic experiences</p>
+    </div>
+    <div class="destinations-grid">
+      <div class="destination-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1537225228614-b4fad34a0b60?w=800&q=80');"></div>
+        <div class="card-content">
+          <h3>Bali, Indonesia</h3>
+          <p>Tropical paradise with ancient temples and stunning beaches</p>
+          <div class="card-price">₹48,000</div>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1518684029980-cf91ee14f331?w=800&q=80');"></div>
+        <div class="card-content">
+          <h3>Dubai, UAE</h3>
+          <p>Luxury shopping, modern architecture, and desert adventures</p>
+          <div class="card-price">₹45,000</div>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1604581211506-bf5a6f95f1b1?w=800&q=80');"></div>
+        <div class="card-content">
+          <h3>Maldives</h3>
+          <p>Overwater villas and crystal-clear lagoons paradise</p>
+          <div class="card-price">₹1,20,000</div>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80');"></div>
+        <div class="card-content">
+          <h3>Switzerland</h3>
+          <p>Alpine peaks and picturesque villages beyond imagination</p>
+          <div class="card-price">₹1,65,000</div>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80');"></div>
+        <div class="card-content">
+          <h3>Paris, France</h3>
+          <p>The city of love with iconic landmarks and fine cuisine</p>
+          <div class="card-price">₹85,000</div>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80');"></div>
+        <div class="card-content">
+          <h3>South Africa</h3>
+          <p>Wildlife safari and dramatic landscape experiences</p>
+          <div class="card-price">₹95,000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features" id="features">
+    <div class="section-header">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">Your Perfect Travel Partner</h2>
+      <p class="section-subtitle">Trusted by thousands of travelers worldwide for exceptional service and unforgettable experiences</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">⭐</span>
+        <h3>4.8 Rating</h3>
+        <p>Trusted by 100,000+ satisfied travelers worldwide</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">✈️</span>
+        <h3>Best Price Guarantee</h3>
+        <p>Unbeatable deals with zero hidden costs guaranteed</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎯</span>
+        <h3>Custom Itineraries</h3>
+        <p>190+ personalized travel plans tailor-made for you</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🛡️</span>
+        <h3>24/7 Support</h3>
+        <p>Expert travel consultants available anytime, anywhere</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES SECTION -->
+  <section class="packages" id="packages">
+    <div class="section-header">
+      <div class="section-label">Travel Packages</div>
+      <h2 class="section-title" style="color: white;">Choose Your Adventure</h2>
+      <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Select from our curated collection of travel experiences</p>
+    </div>
+    <div class="packages-grid">
+      <div class="package-card">
+        <h3>Honeymoon</h3>
+        <p>Romantic getaways to dream destinations for couples</p>
+        <div class="package-price">₹1,50,000+</div>
+        <button class="package-btn">Explore Package</button>
+      </div>
+      <div class="package-card">
+        <h3>Adventure</h3>
+        <p>Thrilling experiences and adrenaline-pumping activities</p>
+        <div class="package-price">₹80,000+</div>
+        <button class="package-btn">Explore Package</button>
+      </div>
+      <div class="package-card">
+        <h3>Family</h3>
+        <p>Fun-filled vacations perfect for everyone's memories</p>
+        <div class="package-price">₹1,20,000+</div>
+        <button class="package-btn">Explore Package</button>
+      </div>
+      <div class="package-card">
+        <h3>Luxury</h3>
+        <p>Premium experiences with five-star accommodations</p>
+        <div class="package-price">₹2,00,000+</div>
+        <button class="package-btn">Explore Package</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <h2>Ready for Your Next Adventure?</h2>
+    <p>Let our expert travel consultants craft the perfect itinerary tailored to your dreams and budget</p>
+    <button class="cta">Get Your Free Consultation</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <p><strong>© 2026 MERAIR Travels and Tours Pvt. Ltd.</strong> | Trusted Travel Partner Since 2009</p>
+    <p>📍 721/26, 1st Floor, 18th Main Rd, 4th T Block East, Jayanagar, Bengaluru 560041</p>
+    <p>📞 +91 80473-55-555 | 📧 contact@merairtravel.com</p>
+    <p style="margin-top: 20px; opacity: 0.7;">Designed & Developed for Premium Travel Experiences</p>
+  </footer>
+
+  <script>
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll animation to elements
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'none';
+          setTimeout(() => {
+            entry.target.style.animation = '';
+          }, 10);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    // CTA Button interactions
+    document.querySelectorAll('.cta').forEach(button => {
+      button.addEventListener('click', () => {
+        alert('🎉 Thank you for your interest!\n\nOur travel consultants will contact you shortly.\n\nContact: contact@merairtravel.com\nPhone: +91 80473-55-555');
+      });
+    });
+  </script>
+</body>
+</html>
